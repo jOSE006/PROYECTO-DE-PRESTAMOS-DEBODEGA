@@ -1,0 +1,831 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EB54BDE9-7F05-4674-A31D-9D9737A36F92}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PROYECTO_DE_BODEGA</RootNamespace>
+    <AssemblyName>PROYECTO DE BODEGA</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>..\..\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="BWCMM">
+      <HintPath>..\..\BWCMM.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonServiceLocator, Version=2.0.5.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.5\lib\net45\CommonServiceLocator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="MvvmCross, Version=6.4.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmCross.6.4.2\lib\tizen40\MvvmCross.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Prism, Version=7.2.0.1422, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Core.7.2.0.1422\lib\net45\Prism.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.2.9.0\lib\net45\Serilog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="aisl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="aisl.Designer.cs">
+      <DependentUpon>aisl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="amp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="amp.Designer.cs">
+      <DependentUpon>amp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="aspiradora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="aspiradora.Designer.cs">
+      <DependentUpon>aspiradora.cs</DependentUpon>
+    </Compile>
+    <Compile Include="atornillador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="atornillador.Designer.cs">
+      <DependentUpon>atornillador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="brocha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="brocha.Designer.cs">
+      <DependentUpon>brocha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cangrejo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cangrejo.Designer.cs">
+      <DependentUpon>cangrejo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="carrito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="carrito.Designer.cs">
+      <DependentUpon>carrito.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cautin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cautin.Designer.cs">
+      <DependentUpon>Cautin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cepillo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cepillo.Designer.cs">
+      <DependentUpon>cepillo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="chapista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="chapista.Designer.cs">
+      <DependentUpon>chapista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cince.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cince.Designer.cs">
+      <DependentUpon>cince.cs</DependentUpon>
+    </Compile>
+    <Compile Include="compas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="compas.Designer.cs">
+      <DependentUpon>compas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="conexiones.cs" />
+    <Compile Include="copas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="copas.Designer.cs">
+      <DependentUpon>copas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cortadora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cortadora.Designer.cs">
+      <DependentUpon>cortadora.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cruz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cruz.Designer.cs">
+      <DependentUpon>cruz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cuchilla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cuchilla.Designer.cs">
+      <DependentUpon>cuchilla.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Database1bodega1DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Database1bodega1DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DEBOLA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DEBOLA.Designer.cs">
+      <DependentUpon>DEBOLA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="decorte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="decorte.Designer.cs">
+      <DependentUpon>decorte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="degolpe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="degolpe.Designer.cs">
+      <DependentUpon>degolpe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="deperfora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="deperfora.Designer.cs">
+      <DependentUpon>deperfora.cs</DependentUpon>
+    </Compile>
+    <Compile Include="depunta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="depunta.Designer.cs">
+      <DependentUpon>depunta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="detrazo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="detrazo.Designer.cs">
+      <DependentUpon>detrazo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="deunion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="deunion.Designer.cs">
+      <DependentUpon>deunion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DEUÑA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DEUÑA.Designer.cs">
+      <DependentUpon>DEUÑA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="electrica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="electrica.Designer.cs">
+      <DependentUpon>electrica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="escalimetro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="escalimetro.Designer.cs">
+      <DependentUpon>escalimetro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="escuadras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="escuadras.Designer.cs">
+      <DependentUpon>escuadras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="esmeril.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="esmeril.Designer.cs">
+      <DependentUpon>esmeril.cs</DependentUpon>
+    </Compile>
+    <Compile Include="estractor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="estractor.Designer.cs">
+      <DependentUpon>estractor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="extensible.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="extensible.Designer.cs">
+      <DependentUpon>extensible.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="herracorte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="herracorte.Designer.cs">
+      <DependentUpon>herracorte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="hexa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="hexa.Designer.cs">
+      <DependentUpon>hexa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventario.Designer.cs">
+      <DependentUpon>Inventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="lima.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="lima.Designer.cs">
+      <DependentUpon>lima.cs</DependentUpon>
+    </Compile>
+    <Compile Include="manuales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="manuales.Designer.cs">
+      <DependentUpon>manuales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="maquinasoldadoras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="maquinasoldadoras.Designer.cs">
+      <DependentUpon>maquinasoldadoras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mazo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mazo.Designer.cs">
+      <DependentUpon>mazo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mecanic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mecanic.Designer.cs">
+      <DependentUpon>mecanic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mecanicas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mecanicas.Designer.cs">
+      <DependentUpon>mecanicas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MENUADMINI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MENUADMINI.Designer.cs">
+      <DependentUpon>MENUADMINI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="metro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="metro.Designer.cs">
+      <DependentUpon>metro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MONTAJE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MONTAJE.Designer.cs">
+      <DependentUpon>MONTAJE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mult.Designer.cs">
+      <DependentUpon>mult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="multi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="multi.Designer.cs">
+      <DependentUpon>multi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pelacables.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pelacables.Designer.cs">
+      <DependentUpon>pelacables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pinzpelacbles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pinzpelacbles.Designer.cs">
+      <DependentUpon>pinzpelacbles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pistolacalor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pistolacalor.Designer.cs">
+      <DependentUpon>pistolacalor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="plano.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="plano.Designer.cs">
+      <DependentUpon>plano.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presi.Designer.cs">
+      <DependentUpon>presi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PRESION.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PRESION.Designer.cs">
+      <DependentUpon>PRESION.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PREST.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PREST.Designer.cs">
+      <DependentUpon>PREST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="provador de luz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="provador de luz.Designer.cs">
+      <DependentUpon>provador de luz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pulidora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pulidora.Designer.cs">
+      <DependentUpon>pulidora.cs</DependentUpon>
+    </Compile>
+    <Compile Include="punta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="punta.Designer.cs">
+      <DependentUpon>punta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rapidografo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="rapidografo.Designer.cs">
+      <DependentUpon>rapidografo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ratchet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ratchet.Designer.cs">
+      <DependentUpon>ratchet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="reglas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reglas.Designer.cs">
+      <DependentUpon>reglas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="reglat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reglat.Designer.cs">
+      <DependentUpon>reglat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="sec t.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="sec t.Designer.cs">
+      <DependentUpon>sec t.cs</DependentUpon>
+    </Compile>
+    <Compile Include="sierra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="sierra.Designer.cs">
+      <DependentUpon>sierra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="sierramanual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="sierramanual.Designer.cs">
+      <DependentUpon>sierramanual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="soplador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="soplador.Designer.cs">
+      <DependentUpon>soplador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SUJECION.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SUJECION.Designer.cs">
+      <DependentUpon>SUJECION.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SUJECIONII.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SUJECIONII.Designer.cs">
+      <DependentUpon>SUJECIONII.cs</DependentUpon>
+    </Compile>
+    <Compile Include="taladra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="taladra.Designer.cs">
+      <DependentUpon>taladra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="taladro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="taladro.Designer.cs">
+      <DependentUpon>taladro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="tapicero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="tapicero.Designer.cs">
+      <DependentUpon>tapicero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="tijera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="tijera.Designer.cs">
+      <DependentUpon>tijera.cs</DependentUpon>
+    </Compile>
+    <Compile Include="torno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="torno.Designer.cs">
+      <DependentUpon>torno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="tortx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="tortx.Designer.cs">
+      <DependentUpon>tortx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="transporta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="transporta.Designer.cs">
+      <DependentUpon>transporta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="universal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="universal.Designer.cs">
+      <DependentUpon>universal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <EmbeddedResource Include="aisl.resx">
+      <DependentUpon>aisl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="amp.resx">
+      <DependentUpon>amp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="aspiradora.resx">
+      <DependentUpon>aspiradora.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="atornillador.resx">
+      <DependentUpon>atornillador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="brocha.resx">
+      <DependentUpon>brocha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cangrejo.resx">
+      <DependentUpon>cangrejo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="carrito.resx">
+      <DependentUpon>carrito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cautin.resx">
+      <DependentUpon>Cautin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cepillo.resx">
+      <DependentUpon>cepillo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="chapista.resx">
+      <DependentUpon>chapista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cince.resx">
+      <DependentUpon>cince.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="compas.resx">
+      <DependentUpon>compas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="copas.resx">
+      <DependentUpon>copas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cortadora.resx">
+      <DependentUpon>cortadora.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cruz.resx">
+      <DependentUpon>cruz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cuchilla.resx">
+      <DependentUpon>cuchilla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DEBOLA.resx">
+      <DependentUpon>DEBOLA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="decorte.resx">
+      <DependentUpon>decorte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="degolpe.resx">
+      <DependentUpon>degolpe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="deperfora.resx">
+      <DependentUpon>deperfora.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="depunta.resx">
+      <DependentUpon>depunta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="detrazo.resx">
+      <DependentUpon>detrazo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="deunion.resx">
+      <DependentUpon>deunion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DEUÑA.resx">
+      <DependentUpon>DEUÑA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="electrica.resx">
+      <DependentUpon>electrica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="escalimetro.resx">
+      <DependentUpon>escalimetro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="escuadras.resx">
+      <DependentUpon>escuadras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="esmeril.resx">
+      <DependentUpon>esmeril.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="estractor.resx">
+      <DependentUpon>estractor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="extensible.resx">
+      <DependentUpon>extensible.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="herracorte.resx">
+      <DependentUpon>herracorte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="hexa.resx">
+      <DependentUpon>hexa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventario.resx">
+      <DependentUpon>Inventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lima.resx">
+      <DependentUpon>lima.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="manuales.resx">
+      <DependentUpon>manuales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="maquinasoldadoras.resx">
+      <DependentUpon>maquinasoldadoras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mazo.resx">
+      <DependentUpon>mazo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mecanic.resx">
+      <DependentUpon>mecanic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mecanicas.resx">
+      <DependentUpon>mecanicas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MENUADMINI.resx">
+      <DependentUpon>MENUADMINI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="metro.resx">
+      <DependentUpon>metro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MONTAJE.resx">
+      <DependentUpon>MONTAJE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mult.resx">
+      <DependentUpon>mult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="multi.resx">
+      <DependentUpon>multi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pelacables.resx">
+      <DependentUpon>pelacables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pinzpelacbles.resx">
+      <DependentUpon>pinzpelacbles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pistolacalor.resx">
+      <DependentUpon>pistolacalor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="plano.resx">
+      <DependentUpon>plano.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presi.resx">
+      <DependentUpon>presi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PRESION.resx">
+      <DependentUpon>PRESION.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PREST.resx">
+      <DependentUpon>PREST.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="provador de luz.resx">
+      <DependentUpon>provador de luz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pulidora.resx">
+      <DependentUpon>pulidora.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="punta.resx">
+      <DependentUpon>punta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rapidografo.resx">
+      <DependentUpon>rapidografo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ratchet.resx">
+      <DependentUpon>ratchet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reglas.resx">
+      <DependentUpon>reglas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reglat.resx">
+      <DependentUpon>reglat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sec t.resx">
+      <DependentUpon>sec t.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sierra.resx">
+      <DependentUpon>sierra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sierramanual.resx">
+      <DependentUpon>sierramanual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="soplador.resx">
+      <DependentUpon>soplador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SUJECION.resx">
+      <DependentUpon>SUJECION.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SUJECIONII.resx">
+      <DependentUpon>SUJECIONII.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="taladra.resx">
+      <DependentUpon>taladra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="taladro.resx">
+      <DependentUpon>taladro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="tapicero.resx">
+      <DependentUpon>tapicero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="tijera.resx">
+      <DependentUpon>tijera.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="torno.resx">
+      <DependentUpon>torno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="tortx.resx">
+      <DependentUpon>tortx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="transporta.resx">
+      <DependentUpon>transporta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="universal.resx">
+      <DependentUpon>universal.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Database1bodega1DataSet.xsc">
+      <DependentUpon>Database1bodega1DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Database1bodega1DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Database1bodega1DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Database1bodega1DataSet.xss">
+      <DependentUpon>Database1bodega1DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database1bodega1.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
